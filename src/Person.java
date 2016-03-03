@@ -1,31 +1,35 @@
+import java.util.HashMap;
+
 public class Person {
     private Name name;
-    private int age;
-    private String gender;
+    private Object age;
     private Address address;
-    private String title = "";
 
 
-    //arguments to be changed
-    public Person(String firstName, String lastName, int age, String gender, String city, String state, String country) {
-        this.name = new Name(firstName, lastName, gender);
-        this.age = age;
-        this.gender = gender;
-        this.address = new Address(city, state, country);
+    public Person(HashMap detailOfPerson) {
+        this.name = new Name(detailOfPerson.get("FirstName"), detailOfPerson.get("LastName"), detailOfPerson.get("Gender"));
+        this.age = detailOfPerson.get("Age");
+        this.address = new Address(detailOfPerson.get("City"), detailOfPerson.get("State"), detailOfPerson.get("Country"));
     }
 
     private Object getFirstNameFirst() {
-        return name.firsttNameFirst();
+        return name.firstNameFirst();
     }
 
     private Object getLastNameFirst() {
         return name.firstNameLast();
     }
 
-    public Object StylePrefered(String opt){
-        if(opt == "first-last")
-           return getFirstNameFirst();
+    public Object stylePrefered(String opt) {
+        if (opt.equals("first-last"))
+            return getFirstNameFirst();
         return getLastNameFirst();
+    }
 
+    public Object withAddressAndStyle(String opt, String preferedCountry) {
+        String countryName = null;
+        if (address.getCountry().equals(preferedCountry))
+            return stylePrefered(opt) + "," + preferedCountry;
+        return countryName;
     }
 }

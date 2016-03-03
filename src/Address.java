@@ -1,15 +1,15 @@
 public class Address {
-    private String city;
-    private String state;
-    private String country;
+    private Object city;
+    private Object state;
+    private Object country;
 
-    public Address(String city, String state, String country) {
+    public Address(Object city, Object state, Object country) {
         this.city = city;
         this.state = state;
         this.country = country;
     }
 
-    public String getCountry(){
+    public Object getCountry() {
         return country;
     }
 }
