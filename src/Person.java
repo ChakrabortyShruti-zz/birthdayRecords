@@ -5,7 +5,7 @@ public class Person implements Honorific {
     private Address address;
 
 
-    public Person(Name name,Gender gender,String age,Address address) {
+    public Person(Name name, Gender gender, String age, Address address) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -22,8 +22,8 @@ public class Person implements Honorific {
 
     public String stylePreferred(String opt) {
         if (opt.equals("--firstLast"))
-            return assignTitle()+" "+getFirstNameFirst();
-        return assignTitle()+" "+getLastNameFirst();
+            return assignTitle() + " " + getFirstNameFirst();
+        return assignTitle() + " " + getLastNameFirst();
     }
 
     public String withAddressAndStyle(String opt, String preferredCountry) {
@@ -39,5 +39,12 @@ public class Person implements Honorific {
             return Gender.Male;
         }
         return Gender.Female;
+    }
+
+    public String withAddressAndAge(String opt, String country, String legalAge) {
+        if (Integer.parseInt(age) >= Integer.parseInt(legalAge))
+            if (!(withAddressAndStyle(opt, country) == ""))
+                return withAddressAndStyle(opt, country) + "," + age;
+        return "";
     }
 }

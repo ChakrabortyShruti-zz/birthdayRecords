@@ -1,27 +1,27 @@
 import java.util.ArrayList;
 
-public class Records {
+public class Guests {
     private final ArrayList<Person> personalDetails;
     private ArrayList<String> list = new ArrayList<>();
 
-    public Records(ArrayList<Person> details) {
+    public Guests(ArrayList<Person> details) {
         this.personalDetails = details;
     }
 
     public String getNamesWithAddress(String opt, String preferredCountry) {
         list.clear();
-        for (Person PersonalDetail : personalDetails) {
-            String representation = PersonalDetail.withAddressAndStyle(opt, preferredCountry);
+        for (Person p : personalDetails) {
+            String representation = p.withAddressAndStyle(opt, preferredCountry);
             if (!representation.equals(""))
                 list.add(representation);
         }
         return representation();
     }
 
-    public String getNameRepresentations(String opt) {
+    public String getName(String opt) {
         list.clear();
-        for (Person PersonalDetail : personalDetails) {
-            String representation = PersonalDetail.stylePreferred(opt);
+        for (Person p : personalDetails) {
+            String representation = p.stylePreferred(opt);
             list.add(representation);
         }
         return representation();
@@ -33,5 +33,15 @@ public class Records {
             str += (i == list.size() - 1) ? list.get(i) : list.get(i) + "\n";
         }
         return str;
+    }
+
+    public String getNameWithAge(String opt, String country, String age) {
+        list.clear();
+        for (Person p : personalDetails) {
+            String representation = p.withAddressAndAge(opt, country, age);
+            if (!(representation.equals("")))
+                list.add(representation);
+        }
+        return representation();
     }
 }

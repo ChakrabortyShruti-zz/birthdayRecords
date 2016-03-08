@@ -1,20 +1,39 @@
 Library to Print Labels(representation of record) on the invitation card.
 Given list of records in file in following format:
     firstName,lastName,gender,age,city,state,country
-Usages-
-     1. Mr First Last
-     2. Mr Last, First
+Output-
+     1. Mr. First Last
+     2. Mr. Last, First
+     3. Mr. First Last,Country
+     4. Mr. Last, First,Country
+
 Assumption-
     Name Should be prefixed according to gender
         female-Ms
         male-Mr
 -------------------------------------------------------------------------------------
 TODO-
+    $ cat records.txt
+        Navya,Sri,Female,22,Vijaywada,Andhra Pradesh,India
+        Tom,Charlie,Male,22,Paris,London,Uk
+    -------------------------------------------------------------
+    $ printLabel --firstLast records.txt
+        Mr. Navya Sri
+        Ms. Tom Charlie
 
-$ printLabel --firstLast records.txt
-    Ms. Navya Sri
-    Ms. Shruti Chakraborty
+    $ printLabel --lastFirst records.txt
+        Mr Sri,Navya
+        Ms Charlie,Tom
+    -------------------------------------------------------------
+    $ printLabel --firstLast records.txt India
+        Ms. Navya Sri,India
 
-$ printLabel --lastFirst records.txt
-    Ms Sri,Navya
-    Ms Chakraborty,Shruti
+    $ printLabel --lastFirst records.txt India
+        Ms. Sri,Navya,India
+    -------------------------------------------------------------
+    $ printLabel --firstLast records.txt India 21
+        Ms. Navya Sri,India,22
+
+    $ printLabel --lastFirst records.txt India 21
+        Ms. Sri,Navya,India,22
+    -------------------------------------------------------------

@@ -31,8 +31,8 @@ public class PersonTest {
         details.add(p2);
         details.add(p3);
 
-        Records detail = new Records(details);
-        assertEquals("Ms. Sanjita Das" + "\n" + "Mr. Sanjit Das" + "\n" + "Ms. Sangita Das", detail.getNameRepresentations("--firstLast"));
+        Guests detail = new Guests(details);
+        assertEquals("Ms. Sanjita Das" + "\n" + "Mr. Sanjit Das" + "\n" + "Ms. Sangita Das", detail.getName("--firstLast"));
     }
 
     @Test
@@ -60,7 +60,7 @@ public class PersonTest {
         details.add(p2);
         details.add(p3);
 
-        Records detail = new Records(details);
+        Guests detail = new Guests(details);
         detail.getNamesWithAddress("last-first", "Uk");
         assertEquals("Ms. Das,Sangita,Uk", detail.getNamesWithAddress("last-first", "Uk"));
 
@@ -92,9 +92,9 @@ public class PersonTest {
         details.add(p2);
         details.add(p3);
 
-        Records detail = new Records(details);
+        Guests detail = new Guests(details);
 
-        assertEquals("Ms. Das,Sanjita" + "\n" + "Mr. Das,Sanjit" + "\n" + "Ms. Das,Sangita", detail.getNameRepresentations("--lastFirst"));
+        assertEquals("Ms. Das,Sanjita" + "\n" + "Mr. Das,Sanjit" + "\n" + "Ms. Das,Sangita", detail.getName("--lastFirst"));
     }
 
 
@@ -122,7 +122,7 @@ public class PersonTest {
         details.add(p2);
         details.add(p3);
 
-        Records detail = new Records(details);
+        Guests detail = new Guests(details);
         assertEquals("Ms. Das,Sanjita,Pakistan", detail.getNamesWithAddress("--lastFirst", "Pakistan"));
     }
 
@@ -151,7 +151,7 @@ public class PersonTest {
         details.add(p2);
         details.add(p3);
 
-        Records detail = new Records(details);
+        Guests detail = new Guests(details);
 
         assertEquals("Ms. Sanjita Das,India\nMr. Sanjit Das,India", detail.getNamesWithAddress("--firstLast", "India"));
     }
