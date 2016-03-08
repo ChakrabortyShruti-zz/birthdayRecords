@@ -1,38 +1,33 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Records {
-    private final ArrayList<Object> personalDetails;
-    private ArrayList list = new ArrayList();
+    private final ArrayList<Person> personalDetails;
+    private ArrayList<String> list = new ArrayList<>();
 
-    public Records(ArrayList<Object> details) {
+    public Records(ArrayList<Person> details) {
         this.personalDetails = details;
     }
 
-    public Object getNamesWithAddress(String opt, String preferedCountry) {
+    public String getNamesWithAddress(String opt, String preferredCountry) {
         list.clear();
-        for (Object PersonalDetail : personalDetails) {
-            Person p = new Person((HashMap) PersonalDetail);
-            Object representation = (p.withAddressAndStyle(opt, preferedCountry));
-            if (representation != null)
+        for (Person PersonalDetail : personalDetails) {
+            String representation = PersonalDetail.withAddressAndStyle(opt, preferredCountry);
+            if (!representation.equals(""))
                 list.add(representation);
         }
-        return list;
+        return representation();
     }
 
-    public Object getNameRepresentations(String opt) {
+    public String getNameRepresentations(String opt) {
         list.clear();
-        for (Object PersonalDetail : personalDetails) {
-            Person p = new Person((HashMap) PersonalDetail);
-            Object representation = p.stylePrefered(opt);
+        for (Person PersonalDetail : personalDetails) {
+            String representation = PersonalDetail.stylePreferred(opt);
             list.add(representation);
         }
-        return list;
+        return representation();
     }
 
-
-    @Override
-    public String toString() {
+    public String representation() {
         String str = "";
         for (int i = 0; i < list.size(); i++) {
             str += (i == list.size() - 1) ? list.get(i) : list.get(i) + "\n";

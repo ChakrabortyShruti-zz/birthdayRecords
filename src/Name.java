@@ -1,28 +1,18 @@
-public class Name implements Title {
-    private Object firstName;
-    private Object lastName;
-    private Object gender;
+public class Name {
+    private String firstName;
+    private String lastName;
 
 
-    public Name(Object firstName, Object lastName, Object gender) {
+    public Name(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.gender = gender;
     }
 
-    public Object firstNameFirst() {
-        return assignTitle() + " " + firstName + " " + lastName;
+    public String firstNameFirst() {
+        return firstName + " " + lastName;
     }
 
-    public Object firstNameLast() {
-        return assignTitle() + " " + lastName + "," + firstName;
-    }
-
-    @Override
-    public Object assignTitle() {
-        if (gender.equals("M")) {
-            return "Mr.";
-        }
-        return "Ms.";
+    public String firstNameLast() {
+        return lastName + "," + firstName;
     }
 }

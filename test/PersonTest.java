@@ -1,7 +1,6 @@
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,202 +8,151 @@ import static org.junit.Assert.assertEquals;
 public class PersonTest {
     @Test
     public void testShouldGiveTheFirstNameFirstWithAppropriatePrefixForWoman() throws Exception {
-        HashMap<Object, Object> p1 = new HashMap<>();
-        p1.put("FirstName", "Sanjita");
-        p1.put("LastName", "Das");
-        p1.put("Age", 22);
-        p1.put("Gender", "F");
-        p1.put("City", "Kolkata");
-        p1.put("State", "West-Bengal");
-        p1.put("Country", "India");
+        Name name1 = new Name("Sanjita","Das");
+        String age1 = "22";
+        Gender gender1 = Gender.Female;
+        Address address1 = new Address("Kolkata", "West-Bengal", "India");
+        Person p1 = new Person(name1,gender1,age1,address1);
 
-        HashMap<Object, Object> p2 = new HashMap<>();
-        p2.put("FirstName", "Sanjit");
-        p2.put("LastName", "Das");
-        p2.put("Age", 22);
-        p2.put("Gender", "M");
-        p2.put("City", "Kolkata");
-        p2.put("State", "West-Bengal");
-        p2.put("Country", "India");
+        Name name2 = new Name("Sanjit","Das");
+        String age2 = "22";
+        Gender gender2 = Gender.Male;
+        Address address2 = new Address("Kolkata", "West-Bengal", "India");
+        Person p2 = new Person(name2,gender2,age2,address2);
 
-        HashMap<Object, Object> p3 = new HashMap<>();
-        p3.put("FirstName", "Sangita");
-        p3.put("LastName", "Das");
-        p3.put("Age", 22);
-        p3.put("Gender", "F");
-        p3.put("City", "Kolkata");
-        p3.put("State", "Paris");
-        p3.put("Country", "Uk");
+        Name name3 = new Name("Sangita","Das");
+        String age3 = "22";
+        Gender gender3 = Gender.Female;
+        Address address3 = new Address("Kolkata", "West-Bengal", "India");
+        Person p3 = new Person(name3,gender3,age3,address3);
 
-        ArrayList<Object> details = new ArrayList<>();
+        ArrayList<Person> details = new ArrayList<>();
         details.add(p1);
         details.add(p2);
         details.add(p3);
 
         Records detail = new Records(details);
-
-        detail.getNameRepresentations("first-last");
-        assertEquals("Ms. Sanjita Das"+"\n"+"Mr. Sanjit Das"+"\n"+"Ms. Sangita Das", detail.toString());
+        assertEquals("Ms. Sanjita Das" + "\n" + "Mr. Sanjit Das" + "\n" + "Ms. Sangita Das", detail.getNameRepresentations("--firstLast"));
     }
 
-    @Test
-    public void testShouldGiveTheLastNameFirstWithAppropriatePrefixForWoman() throws Exception {
-        HashMap<Object, Object> p1 = new HashMap<>();
-        p1.put("FirstName", "Sanjita");
-        p1.put("LastName", "Das");
-        p1.put("Age", 22);
-        p1.put("Gender", "F");
-        p1.put("City", "Kolkata");
-        p1.put("State", "West-Bengal");
-        p1.put("Country", "India");
-
-        HashMap<Object, Object> p2 = new HashMap<>();
-        p2.put("FirstName", "Sanjit");
-        p2.put("LastName", "Das");
-        p2.put("Age", 22);
-        p2.put("Gender", "M");
-        p2.put("City", "Kolkata");
-        p2.put("State", "West-Bengal");
-        p2.put("Country", "India");
-
-        HashMap<Object, Object> p3 = new HashMap<>();
-        p3.put("FirstName", "Sangita");
-        p3.put("LastName", "Das");
-        p3.put("Age", 22);
-        p3.put("Gender", "F");
-        p3.put("City", "Kolkata");
-        p3.put("State", "Paris");
-        p3.put("Country", "Uk");
-
-        ArrayList<Object> details = new ArrayList<>();
-        details.add(p1);
-        details.add(p2);
-        details.add(p3);
-
-        Records detail = new Records(details);
-
-        detail.getNameRepresentations("last-first");
-        assertEquals("Ms. Das,Sanjita" + "\n" + "Mr. Das,Sanjit" + "\n" + "Ms. Das,Sangita", detail.toString());
-    }
-
-
-    @Test
-    public void testShouldGiveTheNameWithCountryInFormalFormat() throws Exception {
-        HashMap<Object, Object> p1 = new HashMap<>();
-        p1.put("FirstName", "Sanjita");
-        p1.put("LastName", "Das");
-        p1.put("Age", 22);
-        p1.put("Gender", "F");
-        p1.put("City", "Kolkata");
-        p1.put("State", "Karachi");
-        p1.put("Country", "Pakistan");
-
-        HashMap<Object, Object> p2 = new HashMap<>();
-        p2.put("FirstName", "Sanjit");
-        p2.put("LastName", "Das");
-        p2.put("Age", 22);
-        p2.put("Gender", "M");
-        p2.put("City", "Kolkata");
-        p2.put("State", "West-Bengal");
-        p2.put("Country", "India");
-
-        HashMap<Object, Object> p3 = new HashMap<>();
-        p3.put("FirstName", "Sangita");
-        p3.put("LastName", "Das");
-        p3.put("Age", 22);
-        p3.put("Gender", "F");
-        p3.put("City", "Kolkata");
-        p3.put("State", "Paris");
-        p3.put("Country", "Uk");
-
-        ArrayList<Object> details = new ArrayList<>();
-        details.add(p1);
-        details.add(p2);
-        details.add(p3);
-
-        Records detail = new Records(details);
-        detail.getNamesWithAddress("last-first", "Pakistan");
-        assertEquals("Ms. Das,Sanjita,Pakistan", detail.toString());
-    }
     @Test
     public void testShouldGiveTheNameWithCountry() throws Exception {
-        HashMap<Object, Object> p1 = new HashMap<>();
-        p1.put("FirstName", "Sanjita");
-        p1.put("LastName", "Das");
-        p1.put("Age", 22);
-        p1.put("Gender", "F");
-        p1.put("City", "Kolkata");
-        p1.put("State", "West-Bengal");
-        p1.put("Country", "India");
+        Name name1 = new Name("Sanjita","Das");
+        String age1 = "22";
+        Gender gender1 = Gender.Female;
+        Address address1 = new Address("Kolkata", "West-Bengal", "India");
+        Person p1 = new Person(name1,gender1,age1,address1);
 
-        HashMap<Object, Object> p2 = new HashMap<>();
-        p2.put("FirstName", "Sanjit");
-        p2.put("LastName", "Das");
-        p2.put("Age", 22);
-        p2.put("Gender", "M");
-        p2.put("City", "Kolkata");
-        p2.put("State", "West-Bengal");
-        p2.put("Country", "India");
+        Name name2 = new Name("Sanjit","Das");
+        String age2 = "22";
+        Gender gender2 = Gender.Male;
+        Address address2 = new Address("Kolkata", "West-Bengal", "India");
+        Person p2 = new Person(name2,gender2,age2,address2);
 
-        HashMap<Object, Object> p3 = new HashMap<>();
-        p3.put("FirstName", "Sangita");
-        p3.put("LastName", "Das");
-        p3.put("Age", 22);
-        p3.put("Gender", "F");
-        p3.put("City", "Kolkata");
-        p3.put("State", "Paris");
-        p3.put("Country", "Uk");
+        Name name3 = new Name("Sangita","Das");
+        String age3 = "22";
+        Gender gender3 = Gender.Female;
+        Address address3 = new Address("Kolkata", "West-Bengal", "Uk");
+        Person p3 = new Person(name3,gender3,age3,address3);
 
-        ArrayList<Object> details = new ArrayList<>();
+        ArrayList<Person> details = new ArrayList<>();
         details.add(p1);
         details.add(p2);
         details.add(p3);
 
         Records detail = new Records(details);
         detail.getNamesWithAddress("last-first", "Uk");
-        assertEquals("Ms. Das,Sangita,Uk", detail.toString());
+        assertEquals("Ms. Das,Sangita,Uk", detail.getNamesWithAddress("last-first", "Uk"));
 
-        detail.getNamesWithAddress("first-last", "India");
-        assertEquals("Ms. Sanjita Das,India" + "\n" + "Mr. Sanjit Das,India", detail.toString());
+        assertEquals("Ms. Sanjita Das,India" + "\n" + "Mr. Sanjit Das,India", detail.getNamesWithAddress("--firstLast", "India"));
     }
 
     @Test
-    public void testShouldGiveTheNameWithCountryInCasualFormat() throws Exception {
-        HashMap<Object, Object> p1 = new HashMap<>();
-        p1.put("FirstName", "Sanjita");
-        p1.put("LastName", "Das");
-        p1.put("Age", 22);
-        p1.put("Gender", "F");
-        p1.put("City", "Kolkata");
-        p1.put("State", "West-Bengal");
-        p1.put("Country", "Pakistan");
+    public void testShouldGiveTheLastNameFirstWithAppropriatePrefixForWoman() throws Exception {
+        Name name1 = new Name("Sanjita","Das");
+        String age1 = "22";
+        Gender gender1 = Gender.Female;
+        Address address1 = new Address("Kolkata", "West-Bengal", "India");
+        Person p1 = new Person(name1,gender1,age1,address1);
 
-        HashMap<Object, Object> p2 = new HashMap<>();
-        p2.put("FirstName", "Sanjit");
-        p2.put("LastName", "Das");
-        p2.put("Age", 22);
-        p2.put("Gender", "M");
-        p2.put("City", "Kolkata");
-        p2.put("State", "West-Bengal");
-        p2.put("Country", "India");
+        Name name2 = new Name("Sanjit","Das");
+        String age2 = "22";
+        Gender gender2 = Gender.Male;
+        Address address2 = new Address("Kolkata", "West-Bengal", "India");
+        Person p2 = new Person(name2,gender2,age2,address2);
 
-        HashMap<Object, Object> p3 = new HashMap<>();
-        p3.put("FirstName", "Sangita");
-        p3.put("LastName", "Das");
-        p3.put("Age", 22);
-        p3.put("Gender", "F");
-        p3.put("City", "Kolkata");
-        p3.put("State", "Paris");
-        p3.put("Country", "Uk");
+        Name name3 = new Name("Sangita","Das");
+        String age3 = "22";
+        Gender gender3 = Gender.Female;
+        Address address3 = new Address("Kolkata", "West-Bengal", "India");
+        Person p3 = new Person(name3,gender3,age3,address3);
 
-        ArrayList<Object> details = new ArrayList<>();
+        ArrayList<Person> details = new ArrayList<>();
         details.add(p1);
         details.add(p2);
         details.add(p3);
 
         Records detail = new Records(details);
 
-        detail.getNamesWithAddress("first-last", "India");
-        assertEquals("Mr. Sanjit Das,India", detail.toString());
+        assertEquals("Ms. Das,Sanjita" + "\n" + "Mr. Das,Sanjit" + "\n" + "Ms. Das,Sangita", detail.getNameRepresentations("--lastFirst"));
+    }
+
+
+    @Test
+    public void testShouldGiveTheNameWithCountryInFormalFormat() throws Exception {
+        Name name1 = new Name("Sanjita","Das");
+        String age1 = "22";
+        Gender gender1 = Gender.Female;
+        Address address1 = new Address("Kolkata", "West-Bengal", "Pakistan");
+        Person p1 = new Person(name1,gender1,age1,address1);
+
+        Name name2 = new Name("Sanjit","Das");
+        String age2 = "22";
+        Gender gender2 = Gender.Male;
+        Address address2 = new Address("Kolkata", "West-Bengal", "India");
+        Person p2 = new Person(name2,gender2,age2,address2);
+
+        Name name3 = new Name("Sangita","Das");
+        String age3 = "22";
+        Gender gender3 = Gender.Female;
+        Address address3 = new Address("Kolkata", "West-Bengal", "Uk");
+        Person p3 = new Person(name3,gender3,age3,address3);
+        ArrayList<Person> details = new ArrayList<>();
+        details.add(p1);
+        details.add(p2);
+        details.add(p3);
+
+        Records detail = new Records(details);
+        assertEquals("Ms. Das,Sanjita,Pakistan", detail.getNamesWithAddress("--lastFirst", "Pakistan"));
+    }
+
+    @Test
+    public void testShouldGiveTheNameWithCountryInCasualFormat() throws Exception {
+        Name name1 = new Name("Sanjita","Das");
+        String age1 = "22";
+        Gender gender1 = Gender.Female;
+        Address address1 = new Address("Kolkata", "West-Bengal", "India");
+        Person p1 = new Person(name1,gender1,age1,address1);
+
+        Name name2 = new Name("Sanjit","Das");
+        String age2 = "22";
+        Gender gender2 = Gender.Male;
+        Address address2 = new Address("Kolkata", "West-Bengal", "India");
+        Person p2 = new Person(name2,gender2,age2,address2);
+
+        Name name3 = new Name("Sangita","Das");
+        String age3 = "22";
+        Gender gender3 = Gender.Female;
+        Address address3 = new Address("Kolkata", "West-Bengal", "Uk");
+        Person p3 = new Person(name3,gender3,age3,address3);
+
+        ArrayList<Person> details = new ArrayList<>();
+        details.add(p1);
+        details.add(p2);
+        details.add(p3);
+
+        Records detail = new Records(details);
+
+        assertEquals("Ms. Sanjita Das,India\nMr. Sanjit Das,India", detail.getNamesWithAddress("--firstLast", "India"));
     }
 }
