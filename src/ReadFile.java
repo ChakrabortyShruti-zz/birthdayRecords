@@ -1,8 +1,6 @@
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Objects;
 
 public class ReadFile {
 
@@ -12,36 +10,12 @@ public class ReadFile {
         this.fileName = fileName;
     }
 
-    public ArrayList<Person> getStructuredFile() throws IOException {
+    public String getFileContent() throws IOException {
         File record = new File(fileName);
-        String[] fileContent = readFile(record);
-        ArrayList<Person> listRecord = new ArrayList<>();
-        getFormattedList(fileContent, listRecord);
-        return listRecord;
-    }
-
-
-    public void getFormattedList(String[] fileContent, ArrayList<Person> listRecord) {
-        for (String aFileContent : fileContent) {
-            String[] detail = aFileContent.split(",");
-            Person guest = initializeInfo(detail);
-            listRecord.add(guest);
-        }
-    }
-
-    private static Person initializeInfo(String[] info) {
-        Name name = new Name(info[0], info[1]);
-        Gender gender = Objects.equals(info[2], "Male") ? Gender.Male : Gender.Female;
-        String age = info[3];
-        Address address = new Address(info[4], info[5], info[6]);
-        return new Person(name, gender, age, address);
-    }
-
-    private static String[] readFile(File fileName) throws IOException {
-        FileReader file = new FileReader(fileName);
-        char[] fileContent = new char[(int) fileName.length()];
+        FileReader file = new FileReader(record);
+        char[] fileContent = new char[(int) record.length()];
         file.read(fileContent);
         String invitees = new String(fileContent);
-        return invitees.split("\n");
+        return invitees;
     }
 }

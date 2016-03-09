@@ -1,11 +1,15 @@
 public enum Gender {
-    Female,
-    Male;
+    Female("Ms."),
+    Male("Mr.");
+
+    private final String honorific;
+
+    Gender(String honorific) {
+        this.honorific = honorific;
+    }
 
     @Override
     public String toString() {
-        if(this.name().equals("Female"))
-            return "Ms.";
-        return "Mr.";
+        return honorific;
     }
 }

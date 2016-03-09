@@ -9,19 +9,19 @@ public class PersonTest {
     @Test
     public void testShouldGiveTheFirstNameFirstWithAppropriatePrefixForWoman() throws Exception {
         Name name1 = new Name("Sanjita","Das");
-        String age1 = "22";
+        int age1 = 22;
         Gender gender1 = Gender.Female;
         Address address1 = new Address("Kolkata", "West-Bengal", "India");
         Person p1 = new Person(name1,gender1,age1,address1);
 
         Name name2 = new Name("Sanjit","Das");
-        String age2 = "22";
+        int age2 = 22;
         Gender gender2 = Gender.Male;
         Address address2 = new Address("Kolkata", "West-Bengal", "India");
         Person p2 = new Person(name2,gender2,age2,address2);
 
         Name name3 = new Name("Sangita","Das");
-        String age3 = "22";
+        int age3 = 22;
         Gender gender3 = Gender.Female;
         Address address3 = new Address("Kolkata", "West-Bengal", "India");
         Person p3 = new Person(name3,gender3,age3,address3);
@@ -38,19 +38,19 @@ public class PersonTest {
     @Test
     public void testShouldGiveTheNameWithCountry() throws Exception {
         Name name1 = new Name("Sanjita","Das");
-        String age1 = "22";
+        int age1 = 22;
         Gender gender1 = Gender.Female;
         Address address1 = new Address("Kolkata", "West-Bengal", "India");
         Person p1 = new Person(name1,gender1,age1,address1);
 
         Name name2 = new Name("Sanjit","Das");
-        String age2 = "22";
+        int age2 = 22;
         Gender gender2 = Gender.Male;
         Address address2 = new Address("Kolkata", "West-Bengal", "India");
         Person p2 = new Person(name2,gender2,age2,address2);
 
         Name name3 = new Name("Sangita","Das");
-        String age3 = "22";
+        int age3 = 22;
         Gender gender3 = Gender.Female;
         Address address3 = new Address("Kolkata", "West-Bengal", "Uk");
         Person p3 = new Person(name3,gender3,age3,address3);
@@ -62,7 +62,7 @@ public class PersonTest {
 
         Guests detail = new Guests(details);
         detail.getNamesWithAddress("last-first", "Uk");
-        assertEquals("Ms. Das,Sangita,Uk", detail.getNamesWithAddress("last-first", "Uk"));
+        assertEquals("Ms. Das,Sangita,Uk", detail.getNamesWithAddress("--lastFirst", "Uk"));
 
         assertEquals("Ms. Sanjita Das,India" + "\n" + "Mr. Sanjit Das,India", detail.getNamesWithAddress("--firstLast", "India"));
     }
@@ -70,19 +70,19 @@ public class PersonTest {
     @Test
     public void testShouldGiveTheLastNameFirstWithAppropriatePrefixForWoman() throws Exception {
         Name name1 = new Name("Sanjita","Das");
-        String age1 = "22";
+        int age1 = 22;
         Gender gender1 = Gender.Female;
         Address address1 = new Address("Kolkata", "West-Bengal", "India");
         Person p1 = new Person(name1,gender1,age1,address1);
 
         Name name2 = new Name("Sanjit","Das");
-        String age2 = "22";
+        int age2 = 22;
         Gender gender2 = Gender.Male;
         Address address2 = new Address("Kolkata", "West-Bengal", "India");
         Person p2 = new Person(name2,gender2,age2,address2);
 
         Name name3 = new Name("Sangita","Das");
-        String age3 = "22";
+        int age3 = 22;
         Gender gender3 = Gender.Female;
         Address address3 = new Address("Kolkata", "West-Bengal", "India");
         Person p3 = new Person(name3,gender3,age3,address3);
@@ -101,19 +101,19 @@ public class PersonTest {
     @Test
     public void testShouldGiveTheNameWithCountryInFormalFormat() throws Exception {
         Name name1 = new Name("Sanjita","Das");
-        String age1 = "22";
+        int age1 = 22;
         Gender gender1 = Gender.Female;
         Address address1 = new Address("Kolkata", "West-Bengal", "Pakistan");
         Person p1 = new Person(name1,gender1,age1,address1);
 
         Name name2 = new Name("Sanjit","Das");
-        String age2 = "22";
+        int age2 = 22;
         Gender gender2 = Gender.Male;
         Address address2 = new Address("Kolkata", "West-Bengal", "India");
         Person p2 = new Person(name2,gender2,age2,address2);
 
         Name name3 = new Name("Sangita","Das");
-        String age3 = "22";
+        int age3 = 22;
         Gender gender3 = Gender.Female;
         Address address3 = new Address("Kolkata", "West-Bengal", "Uk");
         Person p3 = new Person(name3,gender3,age3,address3);
@@ -129,19 +129,19 @@ public class PersonTest {
     @Test
     public void testShouldGiveTheNameWithCountryInCasualFormat() throws Exception {
         Name name1 = new Name("Sanjita","Das");
-        String age1 = "22";
+        int age1 = 22;
         Gender gender1 = Gender.Female;
         Address address1 = new Address("Kolkata", "West-Bengal", "India");
         Person p1 = new Person(name1,gender1,age1,address1);
 
         Name name2 = new Name("Sanjit","Das");
-        String age2 = "22";
+        int age2 = 22;
         Gender gender2 = Gender.Male;
         Address address2 = new Address("Kolkata", "West-Bengal", "India");
         Person p2 = new Person(name2,gender2,age2,address2);
 
         Name name3 = new Name("Sangita","Das");
-        String age3 = "22";
+        int age3 = 22;
         Gender gender3 = Gender.Female;
         Address address3 = new Address("Kolkata", "West-Bengal", "Uk");
         Person p3 = new Person(name3,gender3,age3,address3);

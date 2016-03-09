@@ -1,11 +1,13 @@
-public class Person implements Honorific {
+import java.util.Objects;
+
+public class Person {
     private Gender gender;
     private Name name;
-    private String age;
+    private int age;
     private Address address;
 
 
-    public Person(Name name, Gender gender, String age, Address address) {
+    public Person(Name name, Gender gender, int age, Address address) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -21,29 +23,25 @@ public class Person implements Honorific {
     }
 
     public String stylePreferred(String opt) {
-        if (opt.equals("--firstLast"))
-            return assignTitle() + " " + getFirstNameFirst();
-        return assignTitle() + " " + getLastNameFirst();
+        if (opt.equals("--lastFirst"))
+            return assignTitle() + " " + getLastNameFirst();
+        return assignTitle() + " " + getFirstNameFirst();
     }
 
     public String withAddressAndStyle(String opt, String preferredCountry) {
         String countryName = "";
         if (address.getCountry().equals(preferredCountry))
-            return stylePreferred(opt) + "," + preferredCountry;
+            return stylePreferred(opt) + "," + address.getCountry();
         return countryName;
     }
 
-    @Override
-    public Gender assignTitle() {
-        if (gender == Gender.Male) {
-            return Gender.Male;
-        }
-        return Gender.Female;
+    public String assignTitle() {
+        return gender.toString();
     }
 
     public String withAddressAndAge(String opt, String country, String legalAge) {
-        if (Integer.parseInt(age) >= Integer.parseInt(legalAge))
-            if (!(withAddressAndStyle(opt, country) == ""))
+        if (age >= Integer.parseInt(legalAge)) //Age.isLegal
+            if (!(Objects.equals(withAddressAndStyle(opt, country), "")))
                 return withAddressAndStyle(opt, country) + "," + age;
         return "";
     }
